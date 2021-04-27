@@ -1,0 +1,7 @@
+<h3>subject-active-users works!</h3>
+<h5>Movements [{{ counter }}]</h5>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let user of users; let i = index">
+    {{ user.name }}| <a class="link" (click)="disable(i)"> disable</a>
+  </li>
+</ul>

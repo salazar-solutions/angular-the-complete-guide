@@ -1,0 +1,7 @@
+<h3>subject-inactive-users works!</h3>
+<h5>Movemnets [{{ counter }}]</h5>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let user of users; let i = index">
+    {{ user.name }} | <a class="link" (click)="disable(i)">Disable</a>
+  </li>
+</ul>

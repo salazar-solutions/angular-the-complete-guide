@@ -1,0 +1,9 @@
+<h1>lifecycle works!</h1>
+<div class="row">
+  <div class="col-12 border bg-light p-3" *ngFor="let hook of lifecycleHooks">
+    <p>[{{ hook.time }}]ms</p>
+    <p>{{ hook.msg }}</p>
+    <span *ngIf="hook.arg">arg[{{ hook.arg }}]</span>
+  </div>
+  <button (click)="refreshView()">refresh</button>
+</div>

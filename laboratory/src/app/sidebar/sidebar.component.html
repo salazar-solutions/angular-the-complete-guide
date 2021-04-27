@@ -1,0 +1,5 @@
+<ul class="list-unstyled list-sidebar">
+  <li *ngFor="let path of paths">
+    <a [routerLinkActive]="['active']" [routerLink]="[path]"> {{ path }} </a>
+  </li>
+</ul>

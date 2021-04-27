@@ -1,0 +1,42 @@
+<h3>guards works!</h3>
+<div class="row">
+  <div class="col p-3 m-1 bg-light border">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a routerLink="./canActivateGuard"
+          >Got to Can Activate Guard UnAuthorized</a
+        >|
+        <a
+          [routerLink]="'./canActivateGuard'"
+          [queryParams]="{ auth: 'Authorized' }"
+          >Got to Can Activate Guard Authorized</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col p-3 m-1 bg-light border">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a routerLink="./canActivateChildGuard"
+          >Got to Can Activate Child Guard UnAuthorized</a
+        >|
+        <a
+          [routerLink]="'./canActivateChildGuard'"
+          [queryParams]="{ auth: 'authorized' }"
+          >Got to Can Activate Child Guard Authorized</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col p-3 m-1 bg-light border">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a routerLink="./canDeactivate">Got to Can Deactivate</a>
+      </li>
+    </ul>
+  </div>
+</div>

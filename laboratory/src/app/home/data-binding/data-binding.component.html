@@ -1,0 +1,32 @@
+<h1>data-binding works!</h1>
+<h2 class="p-3">Output</h2>
+<div class="row">
+  <div class="col-12 border p-3 bg-light">
+    <p>Text Interpolation</p>
+    Interpolated text: [{{ interpolatedText }}]
+  </div>
+  <div class="col-12 border p-3 bg-light">
+    <p>Event Binding</p>
+    <button (click)="randomNumber()">
+      Click me <span *ngIf="rand">[{{ rand }}]</span>
+    </button>
+  </div>
+  <div class="col-12 border p-3 bg-light">
+    <p>Property Binding</p>
+    <button *ngFor="let color of colors" (click)="setColor(color)">
+      {{ color }}
+    </button>
+    <div class="p-3">
+      <app-input-child [inputColor]="color"></app-input-child>
+    </div>
+  </div>
+  <div class="col-12 border p-3 bg-light">
+    <app-event-child (addItem)="onAddItem($event)"></app-event-child>
+    <div *ngFor="let item of items">{{ item }}</div>
+  </div>
+  <div class="col-12 border p-3 bg-light">
+    <p>Two Way Binding</p>
+    <app-two-way-binding [(value)]="myTwoWayValue"></app-two-way-binding>
+    <p>value: {{ myTwoWayValue }}</p>
+  </div>
+</div>

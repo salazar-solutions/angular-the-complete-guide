@@ -1,0 +1,44 @@
+<ng-template appAlertAnchor></ng-template>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div>
+      <button type="button" class="btn btn-primary" (click)="onSwitchMode()">
+        Go to {{ mode === FormModeType.SIGN_IN ? "Login" : "Sign Up" }}
+      </button>
+    </div>
+    <!-- <div class="alert alert-danger" *ngIf="error" (dblclick)="cleanError()">
+      <p>{{ error }}</p>
+    </div> -->
+    <div *ngIf="isLoading" style="text-align: center">
+      <app-spinner></app-spinner>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          name="email"
+          formControlName="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          formControlName="password"
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+          {{ mode === FormModeType.LOGIN ? "Login" : "Sign Up" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

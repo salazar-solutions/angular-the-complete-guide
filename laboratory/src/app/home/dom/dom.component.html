@@ -1,0 +1,24 @@
+<p>dom works!</p>
+
+<div class="row">
+  <div class="col-12 bg-light border p-3">
+    <h3>Template variable</h3>
+    <p>Write something: <input #phone (input)="doNothing()" /></p>
+    Magic: {{ phone.value }}
+  </div>
+  <div class="col-12 bg-light border p-3">
+    <h3>ViewChild</h3>
+    <p>
+      Hey it now, Hey now, it is me the
+      <span #viewChildSelector>view Child selected text</span>
+    </p>
+    <button (click)="boldViewChild()">click me</button>
+  </div>
+  <div class="col-12 bg-light border p-3">
+    <h3>ContentChild</h3>
+    <app-dom-child>
+      Hey it now, Hey now, it is me the
+      <span #contentChildSelector>content child selected text</span>
+    </app-dom-child>
+  </div>
+</div>

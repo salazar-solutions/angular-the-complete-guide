@@ -1,0 +1,7 @@
+<h3>Inactive Users</h3>
+<h5>Movements [{{ counter }}]</h5>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let user of inactiveUsers">
+    {{ user.name }} | <button (click)="enable(user.name)">Activate</button>
+  </li>
+</ul>

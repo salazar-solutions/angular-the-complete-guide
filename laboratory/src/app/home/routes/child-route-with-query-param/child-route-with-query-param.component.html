@@ -1,0 +1,17 @@
+<h3>child-route-with-query-param works!</h3>
+<div class="row">
+  <div class="col p-3 m-1 bg-light border">
+    <div>Query Parameter [{{ queryParam }}]</div>
+    <div>change value:<input #queryParamRef /></div>
+    <a class="link" (click)="navigate(queryParamRef.value)">Navigate click</a> |
+    <a [routerLink]="['./']" [queryParams]="{ query: queryParamRef.value }"
+      >Route link</a
+    >|
+    <a
+      [routerLink]="['../childPeserveQuery']"
+      [queryParams]="{ query: queryParamRef.value }"
+      [queryParamsHandling]="'preserve'"
+      >Go to Query param Preserve link</a
+    >
+  </div>
+</div>

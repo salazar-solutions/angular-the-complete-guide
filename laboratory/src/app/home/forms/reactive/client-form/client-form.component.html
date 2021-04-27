@@ -1,0 +1,266 @@
+<p>client-form works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>
+            Email address
+            <input
+              #email
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Enter email"
+            />
+            <small
+              class="form-text text-muted"
+              *appFormControlError="
+                form.get('email');
+                errorMessages: getErrorMessage('email')
+              "
+            ></small>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            First Name
+            <input
+              formControlName="firstName"
+              type="text"
+              class="form-control"
+              placeholder="First Name"
+            />
+            <small
+              class="form-text text-muted"
+              *appFormControlError="
+                form.get('firstName');
+                errorMessages: getErrorMessage('firstName')
+              "
+            ></small>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Last Name
+            <input
+              formControlName="lastName"
+              type="text"
+              class="form-control"
+              placeholder="Last Name"
+            />
+            <small
+              class="form-text text-muted"
+              *appFormControlError="
+                form.get('lastName');
+                errorMessages: getErrorMessage('lastName')
+              "
+            ></small>
+          </label>
+        </div>
+        <div class="form-group">
+          <label
+            >Password
+            <input
+              formControlName="pass"
+              type="password"
+              class="form-control"
+              placeholder="Password" />
+            <small
+              class="form-text text-muted"
+              *appFormControlError="
+                form.get('pass');
+                errorMessages: getErrorMessage('pass')
+              "
+            ></small
+          ></label>
+        </div>
+        <div class="form-group">
+          <label>
+            Gender
+            <input
+              formControlName="gender"
+              type="text"
+              class="form-control"
+              placeholder="Gender"
+            />
+            <small
+              class="form-text text-muted"
+              *appFormControlError="
+                form.get('gender');
+                errorMessages: getErrorMessage('gender')
+              "
+            ></small>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Comments
+            <input
+              formControlName="comments"
+              type="text"
+              class="form-control"
+              placeholder="Comments"
+            />
+            <small
+              class="form-text text-muted"
+              *appFormControlError="
+                form.get('comments');
+                errorMessages: getErrorMessage('comments')
+              "
+            ></small>
+          </label>
+        </div>
+
+        <div formGroupName="directions">
+          <div class="form-group">
+            <label>
+              street
+              <input
+                formControlName="street"
+                type="text"
+                class="form-control"
+                placeholder="street"
+              />
+              <small
+                class="form-text text-muted"
+                *appFormControlError="
+                  form.get('directions.street');
+                  errorMessages: getErrorMessage('directions.street')
+                "
+              ></small>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              number
+              <input
+                formControlName="number"
+                type="text"
+                class="form-control"
+                placeholder="number"
+              /><small
+                class="form-text text-muted"
+                *appFormControlError="
+                  form.get('directions.number');
+                  errorMessages: getErrorMessage('directions.number')
+                "
+              ></small>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              state
+              <input
+                formControlName="state"
+                type="text"
+                class="form-control"
+                placeholder="state"
+              />
+              <small
+                class="form-text text-muted"
+                *appFormControlError="
+                  form.get('directions.state');
+                  errorMessages: getErrorMessage('directions.state')
+                "
+              ></small>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              country
+              <input
+                formControlName="country"
+                type="text"
+                class="form-control"
+                placeholder="country"
+              />
+              <small
+                class="form-text text-muted"
+                *appFormControlError="
+                  form.get('directions.country');
+                  errorMessages: getErrorMessage('directions.country')
+                "
+              ></small>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              cp
+              <input
+                formControlName="cp"
+                type="text"
+                class="form-control"
+                placeholder="cp"
+              />
+              <small
+                class="form-text text-muted"
+                *appFormControlError="
+                  form.get('directions.cp');
+                  errorMessages: getErrorMessage('directions.cp')
+                "
+              ></small>
+            </label>
+          </div>
+          <div formGroupName="phone">
+            <div class="form-group">
+              <label>
+                mobile
+                <input
+                  formControlName="mobile"
+                  type="text"
+                  class="form-control"
+                  placeholder="mobile"
+                />
+                <small
+                  class="form-text text-muted"
+                  *appFormControlError="
+                    form.get('directions.phone.mobile');
+                    errorMessages: getErrorMessage('directions.phone.mobile')
+                  "
+                ></small>
+              </label>
+            </div>
+            <div class="form-group">
+              <label>
+                house
+                <input
+                  formControlName="house"
+                  type="text"
+                  class="form-control"
+                  placeholder="house"
+                />
+                <small
+                  class="form-text text-muted"
+                  *appFormControlError="
+                    form.get('directions.phone.house');
+                    errorMessages: getErrorMessage('directions.phone.house')
+                  "
+                ></small>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check">
+          <label class="form-check-label">
+            <input
+              formControlName="termsAndConditions"
+              type="checkbox"
+              class="form-check-input"
+            />
+            Accept Terms and Conditions
+          </label>
+          <small
+            class="form-text text-muted"
+            *appFormControlError="
+              form.get('termsAndConditions');
+              errorMessages: getErrorMessage('termsAndConditions')
+            "
+          ></small>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

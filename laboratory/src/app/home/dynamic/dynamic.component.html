@@ -1,0 +1,19 @@
+<p>dynamic works!</p>
+<div class="row">
+  <div class="col-12 bg-light border p-3">
+    <h3>Confirm dialog</h3>
+    <button (click)="showConfirmDialog()">click me</button>
+  </div>
+  <div class="col-12 bg-light border p-3">
+    <h3>Form dialog</h3>
+    <button (click)="showFormDialog()">click me</button>
+  </div>
+  <div class="col-12 bg-light border p-3">
+    <h3>Answer</h3>
+    <p>
+      {{ answer ? answer : "not an answer yet" }}
+    </p>
+  </div>
+</div>
+
+<ng-template appAnchor></ng-template>

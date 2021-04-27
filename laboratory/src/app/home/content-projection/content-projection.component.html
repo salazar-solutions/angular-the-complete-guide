@@ -1,0 +1,14 @@
+<h1>content-projection works!</h1>
+<div class="row">
+  <div class="col-6 p-3 border bg-light">
+    <app-single-shot>One shot content to child</app-single-shot>
+  </div>
+  <div class="col-6 p-3 border bg-light">
+    <app-multi-shot
+      ><span class="multi_1"> Projection section #1 [content to child]</span
+      ><span class="multi_2">
+        Projection section #2 [content to child]</span
+      ></app-multi-shot
+    >
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-1">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            formControlName="title"
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            placeholder="Title"
+          />
+          <small id="helpId" class="text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea
+            formControlName="content"
+            name="content"
+            id="content"
+            class="form-control"
+            placeholder="Content"
+          ></textarea>
+          <small id="helpId" class="text-muted">Help text</small>
+        </div>
+        <button class="btn btn-primary" [disabled]="!form.valid">
+          Publish
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-6 offset-1">
+      <button class="btn btn-primary" (click)="fetch()">View</button>
+      <button class="btn btn-danger" (click)="clear()">Clear</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 offset-1">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let publication of publications">
+          <h3>{{ publication.title }}</h3>
+          <hr />
+          <p>{{ publication.content }}</p>
+          <hr />
+          <app-confirm-modal [publication]="publication"></app-confirm-modal
+          >|<button
+            (click)="delete(publication.id)"
+            class="btn btn-lg btn-outline-danger"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+      <div class="alert alert-danger" *ngIf="error">
+        <h3>Errors</h3>
+        <p>{{ error }}</p>
+        <button (click)="clearError()" class="btn btn-lg btn-princpal">
+          Acknowledge
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<p>child-route-preserve-query-param works!</p>
+<div class="row">
+  <div class="col-12 p-3 m-1 bg-light border">
+    <div>Query Parameter [{{ queryParam }}]</div>
+    <div>
+      <a [routerLink]="'../childWithQuery'" [queryParamsHandling]="'preserve'"
+        >Go to child with query preserving value, with route link</a
+      >
+    </div>
+    <div>
+      <a class="link" (click)="navigate()"
+        >Go to child with query preserving value, with Navigate</a
+      >
+    </div>
+  </div>
+</div>

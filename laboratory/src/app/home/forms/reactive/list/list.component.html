@@ -1,0 +1,38 @@
+<h3>list works!</h3>
+<div class="content-fluid">
+  <div class="row">
+    <a routerLink="create">Create</a>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Email</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients; let i = index">
+            <th scope="row">{{ i }}</th>
+            <td>{{ client.email }}</td>
+            <td>{{ client.firstName }}</td>
+            <td>{{ client.lastName }}</td>
+            <td>{{ client.gender }}</td>
+            <td>
+              <a [routerLink]="['edit', i]">Edit</a>|<a
+                class="link"
+                (click)="onDelete(i)"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

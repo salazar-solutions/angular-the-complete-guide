@@ -1,0 +1,11 @@
+<h3>child-route-with-param works!</h3>
+<div class="row">
+  <div class="col bg-light p-3 m-1">
+    Parameter [{{ parameter }}]
+    <div>Change parameter: <input #param /></div>
+    <div>
+      <a class="link" (click)="navigate(param.value)">Navigate go!!</a> |
+      <a [routerLink]="['../', param.value]">router link go!!</a>
+    </div>
+  </div>
+</div>

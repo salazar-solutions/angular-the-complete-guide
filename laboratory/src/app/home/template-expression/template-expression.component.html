@@ -1,0 +1,22 @@
+<h1>template-expression works!</h1>
+
+<div class="row">
+  <div class="col-6 border bg-light p-3 text-center">
+    Text interpolation:[{{ textInterpolation }}]
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 border bg-light p-3">
+    <ol>
+      <li>Evaluates all expressions in double curly braces.</li>
+      <li>Converts the expression results to strings.</li>
+      <li>Links the results to any adjacent literal strings.</li>
+      <li>Assigns the composite to an element or directive property.</li>
+    </ol>
+
+    <p class="text-center" *ngIf="getNumericValue() as temp">
+      Template Expression:<br />[The sum of 1 + 1 + {{ temp }} is
+      {{ 1 + 1 + temp }}]
+    </p>
+  </div>
+</div>

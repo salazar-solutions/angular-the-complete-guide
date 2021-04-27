@@ -1,0 +1,9 @@
+<h1>template-statement works!</h1>
+<div class="row border bg-light">
+  <span> Component context:{{ value }}</span>
+  <div class="col-12 m-2" *ngFor="let value of [1, 2, 3]">
+    <button (click)="printValue(value)">
+      <span> Template context:{{ value }}</span>
+    </button>
+  </div>
+</div>
