@@ -1,2 +1,4 @@
-export * as fromFeature from './feature.reducers';
-export * as FeatureActions from './feature.actions';
+import * as fromFeature from './feature.reducers';
+import * as FeatureActions from './feature.actions';
+
+export { fromFeature, FeatureActions };

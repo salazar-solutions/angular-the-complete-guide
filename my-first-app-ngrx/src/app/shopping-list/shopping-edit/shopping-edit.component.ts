@@ -1,17 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { isNumeric } from 'src/app/shared/common.validations';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list.service';
+import { fromApp } from '../../store';
+import { ShoppingListActions } from './../store';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -19,22 +12,26 @@ import { ShoppingListService } from '../shopping-list.service';
 })
 export class ShoppingEditComponent implements OnDestroy, OnInit {
   subscriptions: Subscription[] = [];
-  editIndex: number = -1;
+  loadedIngredient?: Ingredient;
 
   form = this.fb.group({
     name: [, Validators.required],
     amount: [0, Validators.required],
   });
   constructor(
-    private ingredientService: ShoppingListService,
+    private store: Store<fromApp.AppState>,
     private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    const sub = this.ingredientService.ingredientEditing.subscribe((index) => {
-      this.editIndex = index;
-      this.loadForm();
-    });
+    const sub = this.store
+      .select(ShoppingListActions.MODULE_NAME)
+      .subscribe((state) => {
+        if (state.loadedIngredient) {
+          this.loadedIngredient = state.loadedIngredient;
+          this.form.setValue(this.loadedIngredient);
+        }
+      });
     this.subscriptions.push(sub);
   }
 
@@ -44,31 +41,24 @@ export class ShoppingEditComponent implements OnDestroy, OnInit {
 
   onSubmit() {
     if (this.form.status !== 'VALID') return;
-
     const { value } = this.form;
-    if (this.editIndex < 0) {
-      this.ingredientService.addIngredient(value);
+    if (this.loadedIngredient) {
+      this.store.dispatch(new ShoppingListActions.UpdateIngredient(value));
     } else {
-      this.ingredientService.edit(this.editIndex, value);
+      this.store.dispatch(new ShoppingListActions.AddIngredient(value));
     }
-
     this.cleanForm();
-  }
-
-  loadForm() {
-    if (this.editIndex < 0) return;
-    const ingredient = this.ingredientService.getIngredient(this.editIndex);
-    this.form.setValue(ingredient);
   }
 
   cleanForm() {
     this.form.reset();
-    this.editIndex = -1;
+    this.store.dispatch(new ShoppingListActions.UnloadIngredient());
+    this.loadedIngredient = undefined;
   }
 
   delete() {
-    if (this.editIndex < 0) return;
-    this.ingredientService.delete(this.editIndex);
+    if (!this.loadedIngredient) return;
+    this.store.dispatch(new ShoppingListActions.RemoveIngredient());
     this.cleanForm();
   }
 }
