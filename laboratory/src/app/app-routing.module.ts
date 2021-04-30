@@ -11,6 +11,8 @@ import { ListComponent } from './home/forms/reactive/list/list.component';
 import { HomeComponent } from './home/home.component';
 import { HttpclientComponent as HttpClientComponent } from './home/httpclient/httpclient.component';
 import { LifecycleComponent } from './home/lifecycle/lifecycle.component';
+import { FeatureComponent } from './home/ngrx/feature/feature.component';
+import { NgrxComponent } from './home/ngrx/ngrx.component';
 import { PipesComponent } from './home/pipes/pipes.component';
 import { ChildRoutePreserveQueryParamComponent } from './home/routes/child-route-preserve-query-param/child-route-preserve-query-param.component';
 import { ChildRouteWithParamComponent } from './home/routes/child-route-with-param/child-route-with-param.component';
@@ -97,6 +99,13 @@ export const routes: Routes = [
   },
   { path: 'httpClient', component: HttpClientComponent },
   { path: 'Dynamic-components', component: DynamicComponent },
+  {
+    path: 'NgRx',
+    children: [
+      { path: '', component: NgrxComponent },
+      { path: 'feature', component: FeatureComponent },
+    ],
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

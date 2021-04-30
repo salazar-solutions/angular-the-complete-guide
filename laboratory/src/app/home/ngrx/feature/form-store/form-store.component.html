@@ -1,0 +1,21 @@
+<p>form works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>
+            First Name
+            <input
+              formControlName="ingredient"
+              type="text"
+              class="form-control"
+              placeholder="Ingredient"
+            />
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

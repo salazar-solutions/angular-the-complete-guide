@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavigationService } from 'src/app/shared/navigation.service';
 import { ClientsService } from '../clients.service';
 import { asyncValidation, isNumeric } from '../validators/common.validator';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { CustomAsyncValidator } from '../validators/custom-async.validator';
 import { AsyncValidatorService } from '../validators/async-validator.service';
 import { MockConsumerService } from '../mock-consumer.service';

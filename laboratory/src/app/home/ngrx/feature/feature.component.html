@@ -1,0 +1,16 @@
+<h1>content-projection works!</h1>
+<div class="row">
+  <div class="col-6 p-3 border bg-light">
+    <app-single-shot>NgRx Demo</app-single-shot>
+  </div>
+  <div class="col-6 p-3 border bg-light">
+    <app-form-store (submited)="onSubmit($event)"></app-form-store>
+  </div>
+  <div class="col-6 p-3 border bg-light">
+    <ng-container *ngIf="observableState | async; let state">
+      <ol>
+        <li *ngFor="let ingredient of state.ingredients">{{ ingredient }}</li>
+      </ol>
+    </ng-container>
+  </div>
+</div>

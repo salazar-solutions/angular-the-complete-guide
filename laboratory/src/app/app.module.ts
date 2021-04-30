@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ContentProjectionComponent } from './home/content-projection/content-projection.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SingleShotComponent } from './home/content-projection/single-shot/single-shot.component';
 import { MultiShotComponent } from './home/content-projection/multi-shot/multi-shot.component';
@@ -63,6 +64,10 @@ import { ConfirmationDialogComponent } from './home/dynamic/confirmation-dialog/
 import { AnchorDirective } from './home/dynamic/anchor.directive';
 import { FormComponent } from './home/dynamic/formdialog/form/form.component';
 import { FormDialogComponent } from './home/dynamic/formdialog/form-dialog.component';
+import { NgrxComponent } from './home/ngrx/ngrx.component';
+import { FeatureComponent } from './home/ngrx/feature/feature.component';
+import { FormStoreComponent } from './home/ngrx/feature/form-store/form-store.component';
+import * as fromApp from './home/ngrx/store/app.reducers';
 
 @NgModule({
   declarations: [
@@ -122,13 +127,18 @@ import { FormDialogComponent } from './home/dynamic/formdialog/form-dialog.compo
     ConfirmationDialogComponent,
     AnchorDirective,
     FormComponent,
+    NgrxComponent,
+    FeatureComponent,
+    FormStoreComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, multi: true, useClass: UrlInterceptor },
