@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as fromApp from '../store/app.reducers';
-import * as fromFeature from '../feature/store/feature.reducers';
-import * as FeatureActions from '../feature/store/feature.actions';
 import { FormValue } from './form-store/form-store.component';
+import { fromApp } from '../store';
+import { fromFeature, FeatureActions } from '../feature/store';
 
 @Component({
   selector: 'app-feature',
@@ -15,13 +14,12 @@ export class FeatureComponent implements OnInit {
   observableState?: Observable<fromFeature.State>;
 
   constructor(private store: Store<fromApp.AppState>) {
-    this.observableState = this.store.select('feature');
+    this.observableState = this.store.select(FeatureActions.MODULE_NAME);
   }
 
   ngOnInit(): void {}
 
   onSubmit(formValue: FormValue) {
-    console.log('Calue: %o', formValue);
     this.store.dispatch(new FeatureActions.AddIngredient(formValue.ingredient));
   }
 }

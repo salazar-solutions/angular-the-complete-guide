@@ -2,15 +2,17 @@
   <div class="col-xs-10">
     <app-shopping-edit></app-shopping-edit>
     <hr />
-    <ul class="list-group">
-      <a
-        class="list-group-item"
-        style="cursor: pointer"
-        *ngFor="let ingredient of ingredients; let i = index"
-        (click)="edit(i)"
-      >
-        {{ ingredient.name }} ({{ ingredient.amount }})
-      </a>
-    </ul>
+    <ng-container *ngIf="observableState | async; let state">
+      <ul class="list-group">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngFor="let ingredient of state.ingredients; let i = index"
+          (click)="edit(i)"
+        >
+          {{ ingredient.name }} ({{ ingredient.amount }})
+        </a>
+      </ul>
+    </ng-container>
   </div>
 </div>

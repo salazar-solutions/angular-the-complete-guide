@@ -1,8 +1,7 @@
 import { actionsForFeature } from '../../store/app.actions';
 import { AppAction } from '../../store/definitions';
-import { Action } from '@ngrx/store';
 
-const MODULE_NAME = 'feature';
+export const MODULE_NAME = 'feature';
 
 enum ActionTypes {
   ADD_INGREDIENT = 'ADD_INGREDIENT',

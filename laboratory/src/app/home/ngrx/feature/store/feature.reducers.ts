@@ -13,7 +13,6 @@ export function reducers(state: State = initialState, action: Action) {
   const featureAction = action as FeatureActions;
   switch (featureAction.type) {
     case FeatureActionTypes.ADD_INGREDIENT:
-      console.log('Reducers: %o', featureAction);
       const newState = {
         ...state,
         ingredients: [...state.ingredients, featureAction.payload],
